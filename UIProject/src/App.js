@@ -1,6 +1,7 @@
 import './App.css';
 import HomePage from './pages/HomePage';
 import Header from './components/header';
+import Footer from './components/footer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/LatestRecipes/" element={<div>Latest Recipes</div>} />
             <Route path="/LatestPoetry/" element={<div>Latest Poetry</div>} />
           </Routes>
+          <Footer/>
         </Router>
       </ThemeProvider>
     </div>
