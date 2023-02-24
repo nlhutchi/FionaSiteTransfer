@@ -11,11 +11,8 @@ const useStyles = makeStyles({
         alignItems: "center",
         display: "flex",
         flexDirection: "row",
-        marginLeft: "30rem",
-        marginRight: "30rem",
         justifyContent: "space-between",
-        padding: "2rem",
-        
+        padding: "2rem"
     },
     links: {
         display: "flex",
