@@ -52,7 +52,7 @@ function HomePage(props) {
                     Your one-stop-shop for healthy, easy recipes paired with the perfect song to cook to!
                 </div>
                 <Button variant="contained"> 
-                    Take me to your favs
+                    Take me to your favs!
                 </Button>
             </div>
             <div className={classes.poetry}>
