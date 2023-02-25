@@ -14,7 +14,10 @@
                         ],
                         "Compress": true,
                         "TargetOriginId": "website-origin",
-                        "ViewerProtocolPolicy": "redirect-to-https"
+                        "ViewerProtocolPolicy": "redirect-to-https",
+                        "ForwardedValues": {
+                            "QueryString": "false"
+                        }
                     },
                     "Origins": [
                         {
