@@ -29,7 +29,7 @@
                 "DefaultRootObject": "index.html"
             }
         },
-        "HostingBucket": {
+        "WebHostingBucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
                 "AccessControl": "Private",
