@@ -21,7 +21,7 @@
                     },
                     "Origins": [
                         {
-                            "DomainName": "thecarmelkamaaina.s3.ap-south-1.amazonaws.com",
+                            "DomainName": "thecarmelkamaaina.s3-us-west-2.amazonaws.com",
                             "Id": "website-origin",
                             "S3OriginConfig":{
                                 "OriginAccessIdentity": ""
