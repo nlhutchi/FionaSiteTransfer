@@ -1,51 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import { makeStyles } from '@mui/styles';
+import { Button, Box } from '@mui/material';
 
-const useStyles = makeStyles({
-    wrapper: {
-        alignItems: "center",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        padding: "2rem"
-    },
-    links: {
-        display: "flex",
-        flexDirection: "row",
-    },
-    link: {
-        margin: 10
-    }
-});
 
 function Footer(props) {
-    const classes = useStyles();
-
     return (
-        <div className={`${classes.wrapper}`}>
-            <ul className={`${classes.links}`}>
-                <Button component={Link} className={`${classes.link}`} to="">
+        <>
+            <Box variant="ul">
+                <Button component={Link} to="">
                     Home
                 </Button>
-                <Button component={Link} className={`${classes.link}`} to="/About/">
+                <Button component={Link} to="/About/">
                     About
                 </Button>
-                <Button component={Link} className={`${classes.link}`} to="/LatestRecipes/">
+                <Button component={Link} to="/LatestRecipes/">
                     Latest Recipes
                 </Button>
-                <Button component={Link} className={`${classes.link}`} to="/LatestPeotry/">
+                <Button component={Link} to="/LatestPeotry/">
                     Latest Poetry
                 </Button>
-                <Button component={Link} className={classes.link}>
+                <Button component={Link}>
                     By Meal
                 </Button>
-                <Button component={Link} className={classes.link}>
+                <Button component={Link}>
                     Work With Me
                 </Button>
-            </ul>
-        </div>
+            </Box>
+        </>
     );
 }
 
