@@ -69,6 +69,7 @@ function HomePage(props) {
             <Typography variant='h2'>
                 Latest Recipes
             </Typography>
+            <Box/>
         </>
     );
 }
