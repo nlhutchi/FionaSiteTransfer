@@ -66,6 +66,12 @@
                         "Projection": {
                             "ProjectionType" : "ALL"
                         },
+                        "KeySchema" : [ 
+                            {
+                                "AttributeName" : "searchIndex",
+                                "KeyType" : "HASH"
+                            }
+                        ],
                         "ReadProvisionedThroughputSettings": {
                             "ReadCapacityAutoScalingSettings": {
                                 "MaxCapacity" : 5,
