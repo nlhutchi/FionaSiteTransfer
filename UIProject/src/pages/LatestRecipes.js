@@ -8,10 +8,8 @@ function LatestRecipes(props) {
     return (
         <>
             <Typography 
-                variant='h2'
-                sx={{
-                    margin: '20px'
-                }}
+                variant="h2"
+                className='pageTitle'
             >
                 Latest Recipes
             </Typography>

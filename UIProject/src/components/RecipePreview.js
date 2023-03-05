@@ -5,7 +5,6 @@ import './RecipePreview.css';
 
 
 function RecipePreview(props) {
-    console.log(props)
     return (
         <>
             <Box

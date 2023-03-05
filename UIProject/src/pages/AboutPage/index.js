@@ -3,11 +3,10 @@ import React from 'react';
 import './index.css';
 
 
-function About(props) {
-    console.log(props)
+function AboutPage(props) {
     return (
         <>
-            <Typography variant="h2" className='title'>About</Typography>
+            <Typography variant="h2" className='pageTitle'>About</Typography>
             <Grid container spacing={{ xs: 4 }} columns={{ xs: 1, sm: 2, md: 12 }} className='nameWrapper'>
                 <Box
                     component={Grid}
@@ -92,4 +91,4 @@ function About(props) {
 }
 
 
-export default About;
+export default AboutPage;
