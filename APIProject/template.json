@@ -57,6 +57,9 @@
                     "Variables": {
                         "RecipesTableName": {
                             "Ref": "RecipesTable"
+                        },
+                        "RecipeAssetBucket": {
+                            "Ref": "RecipeAssetBucket"
                         }
                     }
                 },
@@ -85,7 +88,7 @@
                             "Path": "/Recipes",
                             "Method": "get",
                             "RestApiId": {
-                                "Ref": "ApiGateway"
+                                "Ref": "APIGateway"
                             }
                         }
                     }
@@ -172,6 +175,19 @@
                             "TargetValue" : 75.0
                         }
                     }
+                }
+            }
+        },
+        "RecipeAssetBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "RecipePublicAssets",
+                "AccessControl": "PublicRead",
+                "PublicAccessBlockConfiguration": {
+                        "BlockPublicAcls" : false,
+                        "BlockPublicPolicy" : false,
+                        "IgnorePublicAcls" : false,
+                        "RestrictPublicBuckets" : false
                 }
             }
         }
