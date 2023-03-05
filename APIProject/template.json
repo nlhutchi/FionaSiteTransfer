@@ -60,6 +60,20 @@
                         "AttributeType": "S"
                     }
                 ],
+                "GlobalSecondaryIndexes": [
+                    {
+                        "IndexName": "searchIndex",
+                        "ReadProvisionedThroughputSettings": {
+                            "ReadCapacityAutoScalingSettings": {
+                                "MaxCapacity" : 5,
+                                "MinCapacity" : 1,
+                                "TargetTrackingScalingPolicyConfiguration" : {
+                                    "TargetValue" : 75.0
+                                }
+                            }
+                        }
+                    }
+                ],
                 "Replicas": [ 
                     {
                         "Region": "us-west-2",
