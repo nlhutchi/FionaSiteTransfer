@@ -188,7 +188,7 @@
         "RecipeAssetBucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
-                "BucketName": "RecipePublicAssets",
+                "BucketName": "thecarmelkamaaina-recipe-public-assets",
                 "AccessControl": "PublicRead",
                 "PublicAccessBlockConfiguration": {
                         "BlockPublicAcls" : false,
