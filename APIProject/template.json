@@ -39,6 +39,59 @@
                 "BucketName": "thecarmelkamaaina"
             }
         },
+        "APIGateway": {
+            "Type": "AWS::Serverless::Api",
+            "Properties": {
+                "Name": "Carmel-Gateway",
+                "StageName": "Carmel",
+                "EndpointConfiguration": "REGIONAL"
+            }
+        },
+        "RecipeCrudLF": {
+            "Type": "AWS::Serverless::Function",
+            "Properties": {
+                "FunctionName": "Carmel-RecipeCrud",
+                "Description": "Lambda Function Recipe Management",
+                "CodeUri": "./LambdaFunctions/RecipeCrud",
+                "Environment": {
+                    "Variables": {
+                        "RecipesTableName": {
+                            "Ref": "RecipesTable"
+                        }
+                    }
+                },
+                "Policies": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "AllowUsersToAccessRecipesDB",
+                            "Effect": "Allow",
+                            "Action": [
+                                "dynamodb:Scan",
+                                "dynamodb:Query",
+                                "dynamodb:PutItem",
+                                "dynamodb:GetItem",
+                                "dynamodb:UpdateItem",
+                                "dynamodb:DeleteItem"
+                            ],
+                            "Resource": { "Fn::GetAtt": [ "RecipesTable", "Arn" ] }
+                        }
+                    ]
+                },
+                "Events": {
+                    "UploadRecipe": {
+                        "Type": "Api",
+                        "Properties": {
+                            "Path": "/Recipes",
+                            "Method": "get",
+                            "RestApiId": {
+                                "Ref": "ApiGateway"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "RecipesTable": {
             "Type": "AWS::DynamoDB::GlobalTable",
             "Properties": {

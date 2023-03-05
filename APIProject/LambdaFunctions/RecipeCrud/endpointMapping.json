@@ -1,0 +1,8 @@
+{
+    "GET": {
+        "GetRecipes": {
+            "eventName": "Get List of Recipes",
+            "path": "/Recipes/"
+        }
+    }
+}
