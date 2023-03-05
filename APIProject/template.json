@@ -74,8 +74,8 @@
                         ],
                         "WriteProvisionedThroughputSettings": {
                             "WriteCapacityAutoScalingSettings": {
-                                "MaxCapacity" : 1,
-                                "MinCapacity" : 5,
+                                "MaxCapacity" : 5,
+                                "MinCapacity" : 1,
                                 "TargetTrackingScalingPolicyConfiguration" : {
                                     "TargetValue" : 75.0
                                 }
@@ -113,8 +113,8 @@
                 ],
                 "WriteProvisionedThroughputSettings": {
                     "WriteCapacityAutoScalingSettings": {
-                        "MaxCapacity" : 1,
-                        "MinCapacity" : 5,
+                        "MaxCapacity" : 5,
+                        "MinCapacity" : 1,
                         "TargetTrackingScalingPolicyConfiguration" : {
                             "TargetValue" : 75.0
                         }
