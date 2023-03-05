@@ -72,10 +72,10 @@
                                 "KeyType" : "HASH"
                             }
                         ],
-                        "ReadProvisionedThroughputSettings": {
-                            "ReadCapacityAutoScalingSettings": {
-                                "MaxCapacity" : 5,
-                                "MinCapacity" : 1,
+                        "WriteProvisionedThroughputSettings": {
+                            "WriteCapacityAutoScalingSettings": {
+                                "MaxCapacity" : 1,
+                                "MinCapacity" : 5,
                                 "TargetTrackingScalingPolicyConfiguration" : {
                                     "TargetValue" : 75.0
                                 }
