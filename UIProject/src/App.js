@@ -4,6 +4,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LatestRecipes from './pages/LatestRecipes';
 
 const theme = createTheme({
   palette: {
@@ -24,7 +25,7 @@ function App() {
           <Routes>
             <Route path="" element={<HomePage/>} />
             <Route path="/About/" element={<div>About</div>} />
-            <Route path="/LatestRecipes/" element={<div>Latest Recipes</div>} />
+            <Route path="/LatestRecipes/" element={<LatestRecipes/>} />
             <Route path="/LatestPoetry/" element={<div>Latest Poetry</div>} />
           </Routes>
           <Footer/>
