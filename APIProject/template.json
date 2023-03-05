@@ -38,6 +38,66 @@
                 "AccessControl": "Private",
                 "BucketName": "thecarmelkamaaina"
             }
+        },
+        "RecipesTable": {
+            "Type": "AWS::DynamoDB::GlobalTable",
+            "Properties": {
+                "TableName": "carmel-recipes",
+                "BillingMode": "PROVISIONED",
+                "KeySchema": [
+                    {
+                        "AttributeName": "recipeId",
+                        "KeyType": "HASH"
+                    }
+                ],
+                "AttributeDefinitions": [
+                    {
+                        "AttributeName": "recipeId",
+                        "AttributeType": "S"
+                    },
+                    {
+                        "AttributeName": "searchIndex",
+                        "AttributeType": "S"
+                    }
+                ],
+                "Replicas": [ 
+                    {
+                        "Region": "us-west-2",
+                        "GlobalSecondaryIndexes": [ 
+                            {
+                                "IndexName": "searchIndex",
+                                "ReadProvisionedThroughputSettings": {
+                                    "ReadCapacityAutoScalingSettings": {
+                                        "MaxCapacity" : 5,
+                                        "MinCapacity" : 1,
+                                        "TargetTrackingScalingPolicyConfiguration" : {
+                                            "TargetValue" : 75.0
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "ReadProvisionedThroughputSettings" : {
+                            "ReadCapacityAutoScalingSettings": {
+                                "MaxCapacity" : 5,
+                                "MinCapacity" : 1,
+                                "TargetTrackingScalingPolicyConfiguration" : {
+                                    "TargetValue" : 75.0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "WriteProvisionedThroughputSettings": {
+                    "WriteCapacityAutoScalingSettings": {
+                        "MaxCapacity" : 1,
+                        "MinCapacity" : 5,
+                        "TargetTrackingScalingPolicyConfiguration" : {
+                            "TargetValue" : 75.0
+                        }
+                    }
+                }
+            }
         }
     }
 }
