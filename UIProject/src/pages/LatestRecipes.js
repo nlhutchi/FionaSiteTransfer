@@ -10,7 +10,7 @@ function LatestRecipes(props) {
             <Typography 
                 variant='h2'
                 sx={{
-                    margin: 5
+                    margin: '20px'
                 }}
             >
                 Latest Recipes
