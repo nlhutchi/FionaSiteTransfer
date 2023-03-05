@@ -1,5 +1,11 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
+    "Globals": {
+        "Function": {
+            "Runtime": "nodejs16.x",
+            "Handler": "index.handler"
+        }
+    },
     "Resources": {
         "CloudFrontDistribution": {
             "Type": "AWS::CloudFront::Distribution",
