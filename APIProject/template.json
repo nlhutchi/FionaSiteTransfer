@@ -63,6 +63,9 @@
                 "GlobalSecondaryIndexes": [
                     {
                         "IndexName": "searchIndex",
+                        "Projection": {
+                            "ProjectionType" : "ALL"
+                        },
                         "ReadProvisionedThroughputSettings": {
                             "ReadCapacityAutoScalingSettings": {
                                 "MaxCapacity" : 5,
