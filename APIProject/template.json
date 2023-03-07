@@ -110,24 +110,7 @@
                         }
                     }
                 },
-                "Policies": {
-                    "Version": "2012-10-17",
-                    "Statement": [
-                        {
-                            "Sid": "AllowUsersToAccessRecipesDB",
-                            "Effect": "Allow",
-                            "Action": [
-                                "dynamodb:Scan",
-                                "dynamodb:Query",
-                                "dynamodb:PutItem",
-                                "dynamodb:GetItem",
-                                "dynamodb:UpdateItem",
-                                "dynamodb:DeleteItem"
-                            ],
-                            "Resource": { "Fn::GetAtt": [ "RecipesTable", "Arn" ] }
-                        }
-                    ]
-                },
+                "Role": { "Fn::GetAtt" : ["RecipesLambdaRole", "Arn"] },
                 "Events": {
                     "GetRecipes": {
                         "Type": "Api",
@@ -160,6 +143,48 @@
                         }
                     }
                 }
+            }
+        },
+        "RecipesLambdaRole": {
+            "Type" : "AWS::IAM::Role",
+            "Properties" : {
+                "RoleName" : "CKRecipeLambdaRole",
+                "AssumeRolePolicyDocument" : {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "lambda.amazonaws.com"
+                                ]
+                            },
+                            "Action": [
+                                "sts:AssumeRole"
+                            ]
+                        }
+                    ]
+                },
+                "Policies" : [
+                    {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Sid": "AllowUsersToAccessRecipesDB",
+                                "Effect": "Allow",
+                                "Action": [
+                                    "dynamodb:Scan",
+                                    "dynamodb:Query",
+                                    "dynamodb:PutItem",
+                                    "dynamodb:GetItem",
+                                    "dynamodb:UpdateItem",
+                                    "dynamodb:DeleteItem"
+                                ],
+                                "Resource": { "Fn::GetAtt": [ "RecipesTable", "Arn" ] }
+                            }
+                        ]
+                    } 
+                ]
             }
         },
         "RecipesTable": {
@@ -274,7 +299,7 @@
                             "Principal": {
                                 "AWS": [
                                     {
-                                        "Ref": "RecipeCrudLF"
+                                        "Ref": "RecipesLambdaRole"
                                     }
                                 ]
                             },
@@ -286,8 +311,8 @@
                                 "Fn::Sub": "arn:aws:s3:::${RecipeAssetBucket}/*"
                             }
                         }
-                    ]
-                }
+                ]
+              }
             }
         }
     }
