@@ -257,6 +257,38 @@
                         "RestrictPublicBuckets" : false
                 }
             }
+        },
+        "BucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "RecipeAssetBucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Id": "BucketPolicy",
+                    "Statement": [
+                        {
+                            "Sid": "Stmt1547200205482",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": [
+                                    {
+                                        "Ref": "RecipeCrudLF"
+                                    }
+                                ]
+                            },
+                            "Action": [
+                                "s3:GetObject",
+                                "s3:PutObject"
+                            ],
+                            "Resource": {
+                                "Fn::Sub": "arn:aws:s3:::${RecipeAssetBucket}/*"
+                            }
+                        }
+                    ]
+                }
+            }
         }
     }
 }
