@@ -167,22 +167,17 @@
                 },
                 "Policies" : [
                     {
-                        "Version": "2012-10-17",
-                        "Statement": [
-                            {
-                                "Sid": "AllowUsersToAccessRecipesDB",
-                                "Effect": "Allow",
-                                "Action": [
-                                    "dynamodb:Scan",
-                                    "dynamodb:Query",
-                                    "dynamodb:PutItem",
-                                    "dynamodb:GetItem",
-                                    "dynamodb:UpdateItem",
-                                    "dynamodb:DeleteItem"
-                                ],
-                                "Resource": { "Fn::GetAtt": [ "RecipesTable", "Arn" ] }
-                            }
-                        ]
+                        "Sid": "AllowUsersToAccessRecipesDB",
+                        "Effect": "Allow",
+                        "Action": [
+                            "dynamodb:Scan",
+                            "dynamodb:Query",
+                            "dynamodb:PutItem",
+                            "dynamodb:GetItem",
+                            "dynamodb:UpdateItem",
+                            "dynamodb:DeleteItem"
+                        ],
+                        "Resource": { "Fn::GetAtt": [ "RecipesTable", "Arn" ] }
                     } 
                 ]
             }
@@ -270,7 +265,7 @@
                 }
             }
         },
-        
+
         "RecipeAssetBucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
