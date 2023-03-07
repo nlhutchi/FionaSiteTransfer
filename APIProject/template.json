@@ -83,7 +83,6 @@
                         "RequireUppercase": false
                     }
                 },
-                "UsernameAttributes": [ "phone_number", "email" ],
                 "AliasAttributes": ["phone_number", "email", "preferred_username"]
             }
         },
