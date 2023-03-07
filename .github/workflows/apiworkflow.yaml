@@ -20,4 +20,4 @@ jobs:
       - working-directory: APIProject
         run: sam build --use-container
       - working-directory: APIProject
-        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name CarmelKamaaina-API --s3-bucket honersports.com --s3-prefix CarmelKamaaina-API --capabilities CAPABILITY_IAM --region us-west-2
+        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name CarmelKamaaina-API --s3-bucket honersports.com --s3-prefix CarmelKamaaina-API --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM --region us-west-2
