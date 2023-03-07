@@ -24,6 +24,22 @@ exports.handler = async (event, context, callback) => {
                         returnObj.statusCode = 404;
                         return callback(null, returnObj);
                 }
+            case "PUT":
+                var body = JSON.parse(event.body);
+                switch (event.path) {
+                    case endpointMapping.PUT.CreateRecipe.path:
+                        console.log(endpointMapping.GET.CreateRecipe.eventName);
+                        await createNewRecipe(body);
+                        return callback(null, returnObj);
+                    case endpointMapping.PUT.AddAssetFile.path:
+                        console.log(endpointMapping.GET.AddAssetFile.eventName);
+                        await getUploadURL(body);
+                        return callback(null, returnObj);
+                    default:
+                        returnObj.body = "Path not found";
+                        returnObj.statusCode = 404;
+                        return callback(null, returnObj);
+                }
             default:
                 returnObj.body = "Method Not Allowed";
                 returnObj.statusCode = 405;
@@ -47,11 +63,40 @@ async function getAllRecipes() {
     var params = {
         TableName : process.env.RecipesTableName
     };
-    
+
     await documentClient.scan(params).promise()
         .then((response) => {
             console.log('response', response);
             returnObj.statusCode = 200;
             returnObj.body = JSON.stringify(response);
         });
+}
+
+async function createNewRecipe(body) {
+    // var params = {
+    //     TableName : process.env.RecipesTableName
+    // };
+
+    // await documentClient.scan(params).promise()
+    //     .then((response) => {
+    //         console.log('response', response);
+    //         returnObj.statusCode = 200;
+    //         returnObj.body = JSON.stringify(response);
+    //     });
+}
+
+async function getUploadURL(body) {
+    var imageKey = `RecipeImages/${uuidv4()}`;
+    var params = { 
+        Bucket: process.env.RecipeAssetBucket,
+        Key: imageKey
+    };
+
+    var url = s3.getSignedUrl('putObject', params);
+
+    returnObj.statusCode = 200;
+    returnObj.body = JSON.stringify({
+        imageKey,
+        url
+    });
 }

@@ -4,5 +4,15 @@
             "eventName": "Get List of Recipes",
             "path": "/Recipes/"
         }
+    },
+    "PUT": {
+        "AddAssetFile": {
+            "eventName": "Add Recipe Asset",
+            "path": "/RecipeAsset/"
+        },
+        "CreateRecipe": {
+            "eventName": "Create New Recipe",
+            "path": "/Recipe/"
+        }
     }
 }

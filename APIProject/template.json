@@ -46,6 +46,47 @@
                 "BucketName": "thecarmelkamaaina"
             }
         },
+        "UserPool": {
+            "Type": "AWS::Cognito::UserPool",
+            "Properties": {
+                "UserPoolName": "CarmelKamaainaPool",
+                "AccountRecoverySetting": {
+
+                },
+                "UsernameConfiguration": {
+                    "CaseSensitive": false
+                },
+                "Schema": [
+                    {
+                        "Name": "given_name",
+                        "Required": true
+                    },
+                    {
+                        "Name": "family_name",
+                        "Required": true
+                    },
+                    {
+                        "Name": "email",
+                        "Required": false
+                    },
+                    {
+                        "Name": "phone_number",
+                        "Required": false
+                    }
+                ],
+                "Policies": {
+                    "PasswordPolicy": {
+                        "MinimumLength": 8,
+                        "RequireNumbers": true,
+                        "RequireSymbols": false,
+                        "RequireLowercase": false,
+                        "RequireUppercase": false
+                    }
+                },
+                "UsernameAttributes": [ "phone_number", "email" ],
+                "AliasAttributes": ["phone_number", "email", "preferred_username"]
+            }
+        },
         "APIGateway": {
             "Type": "AWS::Serverless::Api",
             "Properties": {
@@ -89,11 +130,31 @@
                     ]
                 },
                 "Events": {
-                    "UploadRecipe": {
+                    "GetRecipes": {
                         "Type": "Api",
                         "Properties": {
                             "Path": "/Recipes",
                             "Method": "get",
+                            "RestApiId": {
+                                "Ref": "APIGateway"
+                            }
+                        }
+                    },
+                    "UploadRecipe": {
+                        "Type": "Api",
+                        "Properties": {
+                            "Path": "/Recipe",
+                            "Method": "put",
+                            "RestApiId": {
+                                "Ref": "APIGateway"
+                            }
+                        }
+                    },
+                    "UploadRecipeAsset": {
+                        "Type": "Api",
+                        "Properties": {
+                            "Path": "/RecipeAsset",
+                            "Method": "put",
                             "RestApiId": {
                                 "Ref": "APIGateway"
                             }
