@@ -1,5 +1,6 @@
 const AWS = require("aws-sdk");
 var documentClient = new AWS.DynamoDB.DocumentClient();
+var s3 = new AWS.S3();
 const endpointMapping = require("./endpointMapping.json");
 const { v4: uuidv4 } = require("uuid");
 
@@ -89,7 +90,9 @@ async function getUploadURL(body) {
     var imageKey = `RecipeImages/${uuidv4()}`;
     var params = { 
         Bucket: process.env.RecipeAssetBucket,
-        Key: imageKey
+        Key: imageKey,
+        Expires: 180,
+        ResponseContentDisposition: `attachment; filename=\"${body.fileName}\"`
     };
 
     var url = s3.getSignedUrl('putObject', params);
