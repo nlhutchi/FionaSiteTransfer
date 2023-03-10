@@ -302,9 +302,7 @@
                             "Effect": "Allow",
                             "Principal": {
                                 "AWS": [
-                                    {
-                                        "Ref": "RecipesLambdaRole"
-                                    }
+                                    {"Fn::GetAtt" : ["RecipesLambdaRole", "Arn"] }
                                 ]
                             },
                             "Action": [
@@ -315,8 +313,8 @@
                                 "Fn::Sub": "arn:aws:s3:::${RecipeAssetBucket}/*"
                             }
                         }
-                ]
-              }
+                    ]
+                }
             }
         }
     }
