@@ -91,8 +91,7 @@ async function getUploadURL(body) {
     var params = { 
         Bucket: process.env.RecipeAssetBucket,
         Key: imageKey,
-        Expires: 180,
-        ResponseContentDisposition: `attachment; filename=\"${body.fileName}\"`
+        Expires: 180
     };
 
     var url = s3.getSignedUrl('putObject', params);
