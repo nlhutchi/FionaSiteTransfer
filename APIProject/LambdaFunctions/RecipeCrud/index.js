@@ -29,11 +29,11 @@ exports.handler = async (event, context, callback) => {
                 var body = JSON.parse(event.body);
                 switch (event.path) {
                     case endpointMapping.PUT.CreateRecipe.path:
-                        console.log(endpointMapping.GET.CreateRecipe.eventName);
+                        console.log(endpointMapping.PUT.CreateRecipe.eventName);
                         await createNewRecipe(body);
                         return callback(null, returnObj);
                     case endpointMapping.PUT.AddAssetFile.path:
-                        console.log(endpointMapping.GET.AddAssetFile.eventName);
+                        console.log(endpointMapping.PUT.AddAssetFile.eventName);
                         await getUploadURL(body);
                         return callback(null, returnObj);
                     default:
