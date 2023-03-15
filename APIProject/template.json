@@ -291,6 +291,49 @@
             }
         },
         
+        "PoemsTable": {
+            "Type": "AWS::DynamoDB::GlobalTable",
+            "Properties": {
+                "TableName": "carmel-poems",
+                "BillingMode": "PROVISIONED",
+                "KeySchema": [
+                    {
+                        "AttributeName": "poemId",
+                        "KeyType": "HASH"
+                    }
+                ],
+                "AttributeDefinitions": [
+                    {
+                        "AttributeName": "poemId",
+                        "AttributeType": "S"
+                    }
+                ],
+                "Replicas": [ 
+                    {
+                        "Region": "us-west-2",
+                        "ReadProvisionedThroughputSettings" : {
+                            "ReadCapacityAutoScalingSettings": {
+                                "MaxCapacity" : 5,
+                                "MinCapacity" : 1,
+                                "TargetTrackingScalingPolicyConfiguration" : {
+                                    "TargetValue" : 75.0
+                                }
+                            }
+                        }
+                    }
+                ],
+                "WriteProvisionedThroughputSettings": {
+                    "WriteCapacityAutoScalingSettings": {
+                        "MaxCapacity" : 5,
+                        "MinCapacity" : 1,
+                        "TargetTrackingScalingPolicyConfiguration" : {
+                            "TargetValue" : 75.0
+                        }
+                    }
+                }
+            }
+        },
+        
         "RecipeAssetBucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
