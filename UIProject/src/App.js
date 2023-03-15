@@ -6,6 +6,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LatestRecipes from './pages/LatestRecipes';
 import AboutPage from './pages/AboutPage';
+import LatestPoetry from './pages/LatestPoetry';
+import { CKProvider } from "./context/CKContext";
 
 const theme = createTheme({
   palette: {
@@ -21,16 +23,18 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Router history={Router.browserHistory}>
-          <Header/>
-          <Routes>
-            <Route path="" element={<HomePage/>} />
-            <Route path="/About/" element={<AboutPage />} />
-            <Route path="/LatestRecipes/" element={<LatestRecipes/>} />
-            <Route path="/LatestPoetry/" element={<div>Latest Poetry</div>} />
-          </Routes>
-          <Footer/>
-        </Router>
+        <CKProvider>
+          <Router history={Router.browserHistory}>
+            <Header/>
+            <Routes>
+              <Route path="" element={<HomePage/>} />
+              <Route path="/About/" element={<AboutPage />} />
+              <Route path="/LatestRecipes/" element={<LatestRecipes/>} />
+              <Route path="/LatestPoetry/" element={<LatestPoetry />} />
+            </Routes>
+            <Footer/>
+          </Router>
+        </CKProvider>
       </ThemeProvider>
     </div>
   );

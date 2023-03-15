@@ -33,7 +33,7 @@ function Header(props) {
                 <Button component={Link} className={`hidemobile`} to="/LatestRecipes/">
                     Latest Recipes
                 </Button>
-                <Button component={Link} className={`hidemobile`} to="/LatestPeotry/">
+                <Button component={Link} className={`hidemobile`} to="/LatestPoetry/">
                     Latest Poetry
                 </Button>
                 <Button component={Link}>

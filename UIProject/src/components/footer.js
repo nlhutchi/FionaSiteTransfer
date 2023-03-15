@@ -16,7 +16,7 @@ function Footer(props) {
                 <Button component={Link} to="/LatestRecipes/">
                     Latest Recipes
                 </Button>
-                <Button component={Link} to="/LatestPeotry/">
+                <Button component={Link} to="/LatestPoetry/">
                     Latest Poetry
                 </Button>
                 <Button component={Link}>
