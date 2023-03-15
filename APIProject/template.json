@@ -94,6 +94,50 @@
                 "EndpointConfiguration": "REGIONAL"
             }
         },
+
+        "PoetryCrudLF": {
+            "Type": "AWS::Serverless::Function",
+            "Properties": {
+                "FunctionName": "Carmel-PoetryCrud",
+                "Description": "Lambda Function Poetry Management",
+                "CodeUri": "./LambdaFunctions/PoetryCrud",
+                "Environment": {
+                    "Variables": {
+                        "PoetryTableName": {
+                            "Ref": "PoemsTable"
+                        }
+                    }
+                },
+                "Policies": [
+                    {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Sid": "DynamoDBPermissions",
+                                "Effect": "Allow",
+                                "Action": [
+                                    "dynamodb:*"
+                                ],
+                                "Resource": { "Ref": "PoemsTable" }
+                            }
+                        ]
+                    }
+                ],
+                "Events": {
+                    "GetRecipes": {
+                        "Type": "Api",
+                        "Properties": {
+                            "Path": "/Poetry/All",
+                            "Method": "get",
+                            "RestApiId": {
+                                "Ref": "APIGateway"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
         "RecipeCrudLF": {
             "Type": "AWS::Serverless::Function",
             "Properties": {
