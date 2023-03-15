@@ -118,7 +118,7 @@
                                 "Action": [
                                     "dynamodb:*"
                                 ],
-                                "Resource": { "Ref": "PoemsTable" }
+                                "Resource": { "Fn::GetAtt": ["PoemsTable", "Arn"] }
                             }
                         ]
                     }
