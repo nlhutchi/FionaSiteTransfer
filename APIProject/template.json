@@ -46,7 +46,7 @@
                 "BucketName": "thecarmelkamaaina"
             }
         },
-        "UserPool": {
+        "CKUserPool": {
             "Type": "AWS::Cognito::UserPool",
             "Properties": {
                 "UserPoolName": "CarmelKamaainaPool",
@@ -85,6 +85,25 @@
                 },
                 "AliasAttributes": ["phone_number", "email", "preferred_username"]
             }
+        },
+        "CKUserPoolClient": {
+            "Type" : "AWS::Cognito::UserPoolClient",
+            "Properties" : {
+                "ClientName" : "CKWebClient",
+                "UserPoolId": {
+                    "Ref": "CKUserPool"
+                }
+            }
+        },
+        "CKAdminGroup": {
+            "Type" : "AWS::Cognito::UserPoolGroup",
+            "Properties" : {
+                "GroupName" : "GodTier",
+                "Description" : "Basically Fiona and Nate. WE CAN DO ANYTHING!!!",
+                "UserPoolId" : {
+                    "Ref": "CKUserPool"
+                }
+              }
         },
         "APIGateway": {
             "Type": "AWS::Serverless::Api",
